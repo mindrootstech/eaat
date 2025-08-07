@@ -60,7 +60,10 @@ class _CustomCheckBoxTileState extends State<CustomCheckBoxTile> {
                 width: 1.0,
               ),
               onChanged: (value) {
-                // widget.onChanged?.call(value ?? false);
+                widget.onChanged?.call(value ?? false);
+                setState(() {
+                  isSelected = value ?? false;
+                });
               },
             ),
           ],

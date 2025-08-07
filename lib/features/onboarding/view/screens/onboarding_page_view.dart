@@ -6,6 +6,7 @@ import 'package:eaat/core/constants/figma_constants.dart';
 import 'package:eaat/features/onboarding/view/utils/page_view_constants.dart';
 import 'package:eaat/features/onboarding/view/widgets/animated_button_with_back.dart';
 import 'package:eaat/features/onboarding/view/widgets/common_page_view_page.dart';
+import 'package:eaat/widgets/custom_app_bar.dart';
 import 'package:eaat/widgets/page_view_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -34,24 +35,20 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: ColorPalette.scaffoldSecondaryBackground,
+        title: PageViewIndicator(
+          pageController: _pageController,
+          size: pageViewList.length,
+        ),
+      ),
       backgroundColor: ColorPalette.scaffoldSecondaryBackground,
       bottomNavigationBar: SingleChildScrollView(
         padding: EdgeInsets.all(FigmaConstants.defaultPadding),
         child: AnimatedButtonWithBack(controller: _pageController),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(FigmaConstants.defaultPadding),
-        child: Column(
-          children: [
-            CustomSpacers.height60,
-            PageViewIndicator(
-              pageController: _pageController,
-              size: pageViewList.length,
-            ),
-            _buildPageView(),
-          ],
-        ),
-      ),
+      body: Column(children: [CustomSpacers.height60, _buildPageView()]),
     );
   }
 

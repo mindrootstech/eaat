@@ -5,79 +5,128 @@ import 'package:eaat/features/onboarding/controllers/my_preferences_controller.d
 import 'package:eaat/features/onboarding/view/widgets/common_pref_page.dart';
 import 'package:eaat/utils/locale/app_locale.dart';
 import 'package:eaat/utils/themes/text_styles.dart';
+import 'package:eaat/widgets/custom_app_bar.dart';
 import 'package:eaat/widgets/custom_button.dart';
 import 'package:eaat/widgets/page_view_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 
+enum MyPreferencesPageViewType { onboarding, profile }
+
+extension MyPreferencesPageViewTypeExtension on MyPreferencesPageViewType {
+  bool get isOnboarding => this == MyPreferencesPageViewType.onboarding;
+  bool get isProfile => this == MyPreferencesPageViewType.profile;
+}
+
 class MyPreferencesPageView extends StatelessWidget {
-  MyPreferencesPageView({super.key});
+  final MyPreferencesPageViewType type;
+  MyPreferencesPageView({super.key, required this.type});
   final controller = Get.find<MyPreferencesController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
-          onPressed: () => controller.previousPage(),
+      appBar: CustomAppBar(
+        leading: Visibility(
+          visible:
+              type.isOnboarding &&
+              controller.currentPage.value >= controller.pageList.length - 1,
+          child: GestureDetector(
+            child: const Icon(
+              Icons.arrow_back_ios_outlined,
+              color: Colors.black,
+            ),
+            onTap: () => type.isProfile
+                ? controller.currentPage >= controller.pageList.length - 1
+                      ? Get.back()
+                      : controller.previousPage()
+                : Get.back(),
+          ),
         ),
         actions: [
-          Obx(
-            () => Text(
-              '${controller.currentPage.value + 1}/${controller.pageList.length}',
-              style: TextStyles.const15.w400.black,
+          if (type.isOnboarding)
+            Obx(
+              () => Text(
+                '${controller.currentPage.value + 1}/${controller.pageList.length}',
+                style: TextStyles.const15.w400.black,
+              ),
             ),
-          ),
-          CustomSpacers.width25,
         ],
         backgroundColor: ColorPalette.scaffoldSecondaryBackground,
-        title: PageViewIndicator(
-          pageController: controller.pageController,
-          size: controller.pageList.length,
-        ),
+        title: type.isOnboarding
+            ? PageViewIndicator(
+                pageController: controller.pageController,
+                size: controller.pageList.length,
+              )
+            : Text(AppLocale.myPreferences.tr),
       ),
 
-      bottomNavigationBar: Container(
-        color: ColorPalette.scaffoldSecondaryBackground,
-        child: Padding(
-          padding: EdgeInsets.all(FigmaConstants.defaultPadding),
-          child: CustomButton(
-            label: AppLocale.textNext.tr,
-            onTap: () => controller.nextPage(),
-          ),
-        ),
-      ),
       backgroundColor: ColorPalette.scaffoldSecondaryBackground,
-      body: Column(
-        children: [
-          // CustomSpacers.height10,
-          _buildPageView(controller),
-          // CustomSpacers.height40,
-        ],
-      ),
+      body: _buildPageView(controller),
     );
   }
 
   Widget _buildPageView(MyPreferencesController controller) {
-    return Container(
-      padding: EdgeInsets.all(FigmaConstants.defaultPadding),
-      height:
-          MediaQuery.of(Get.context!).size.height * .72, // or a fixed height
-      child: PageView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: controller.pageController,
-        itemCount: controller.pageList.length,
-        itemBuilder: (context, index) {
-          return Obx(
-            () => CommonPrefPage(
-              preferenceType: controller.pageList[index],
-              onValueChanged: controller.selectValue,
-              preferences: controller.preferences[index].values,
+    return Stack(
+      children: [
+        PageView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: controller.pageController,
+          itemCount: controller.pageList.length,
+          itemBuilder: (context, index) {
+            return Obx(
+              () => CommonPrefPage(
+                preferenceType: controller.pageList[index],
+                onValueChanged: controller.selectValue,
+                preferences: controller.preferences[index].values,
+              ),
+            );
+          },
+        ),
+
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Obx(
+            () => Container(
+              color: Colors.transparent,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: FigmaConstants.defaultPadding,
+                  left: FigmaConstants.defaultPadding,
+                  right: FigmaConstants.defaultPadding,
+                ),
+                child: CustomButton(
+                  label: _actionButtonLabel,
+                  onTap: () {
+                    if (controller.currentPage.value ==
+                        controller.pageList.length - 1) {
+                      if (type.isOnboarding) {
+                        controller.finishOnboarding();
+                      } else {
+                        controller.finshSavedPrefs();
+                      }
+                    } else {
+                      controller.nextPage();
+                    }
+                  },
+                ),
+              ),
             ),
-          );
-        },
-      ),
+          ),
+        ),
+      ],
     );
+  }
+
+  String get _actionButtonLabel {
+    final isLastPage =
+        controller.currentPage.value == controller.pageList.length - 1;
+
+    if (isLastPage) {
+      if (type.isOnboarding) return AppLocale.textFinish.tr;
+      if (type.isProfile) return AppLocale.textSave.tr;
+    }
+
+    return AppLocale.textNext.tr;
   }
 }

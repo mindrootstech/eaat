@@ -23,11 +23,11 @@ class CommmonPageViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: Padding(
-        padding: EdgeInsets.all(FigmaConstants.defaultPadding),
+    return Padding(
+      padding: EdgeInsets.all(FigmaConstants.defaultPadding),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

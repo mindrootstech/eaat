@@ -10,7 +10,7 @@ final pageViewList = [
   ),
   CommonPageViewParms(
     title: AppLocale.textAiAnalysis,
-    description: AppLocale.textAiSuggestRecipeWhichCanEasilyMade,
+    description: AppLocale.textOurAiWillAnalyzeYourIngredients,
     imagePath: AppAssets.svgImage.onboardingOne,
   ),
   CommonPageViewParms(

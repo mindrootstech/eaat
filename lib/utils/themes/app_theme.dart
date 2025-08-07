@@ -1,5 +1,6 @@
 import 'package:eaat/core/constants/color_palette.dart';
 import 'package:eaat/core/constants/figma_constants.dart';
+import 'package:eaat/utils/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +9,14 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
     brightness: Brightness.light,
-
+    appBarTheme: AppBarTheme(
+      titleSpacing: FigmaConstants.defaultPadding,
+      backgroundColor: ColorPalette.scaffoldBackground,
+      elevation: 0,
+      titleTextStyle: TextStyles.const17.w600.black,
+      centerTitle: true,
+      iconTheme: const IconThemeData(color: Colors.black),
+    ),
     primaryColor: ColorPalette.primary,
     scaffoldBackgroundColor: ColorPalette.scaffoldBackground,
     colorScheme: const ColorScheme.light(

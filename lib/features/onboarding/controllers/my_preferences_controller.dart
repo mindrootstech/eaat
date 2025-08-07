@@ -2,7 +2,9 @@ import 'package:eaat/core/constants/global.dart';
 import 'package:eaat/features/onboarding/model/entities/preferences_entity.dart';
 import 'package:eaat/features/onboarding/model/repositories/my_preferences_repository.dart';
 import 'package:eaat/features/onboarding/view/utils/prefs_constants.dart';
+import 'package:eaat/router/app_routes.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 class MyPreferencesController extends GetxController {
@@ -82,6 +84,16 @@ class MyPreferencesController extends GetxController {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+  }
+
+  Future<void> finishOnboarding() async {
+    await saveMyPreferences();
+    Get.offNamed(AppRoutes.scan);
+  }
+
+  Future<void> finshSavedPrefs() async {
+    await saveMyPreferences();
+    Get.offNamed(AppRoutes.dashBoard);
   }
 
   void previousPage() {

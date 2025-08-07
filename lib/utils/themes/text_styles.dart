@@ -11,8 +11,10 @@ class TextStyles {
   static TextStyle const10 = _base.copyWith(fontSize: 10.sp);
   static TextStyle const12 = _base.copyWith(fontSize: 12.sp);
   static TextStyle const14 = _base.copyWith(fontSize: 14.sp);
+  static TextStyle const13 = _base.copyWith(fontSize: 13.sp);
   static TextStyle const15 = _base.copyWith(fontSize: 15.sp);
   static TextStyle const16 = _base.copyWith(fontSize: 16.sp);
+  static TextStyle const17 = _base.copyWith(fontSize: 17.sp);
   static TextStyle const18 = _base.copyWith(fontSize: 18.sp);
   static TextStyle const20 = _base.copyWith(fontSize: 20.sp);
   static TextStyle const24 = _base.copyWith(fontSize: 24.sp);

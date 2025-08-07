@@ -50,9 +50,9 @@ class _PageViewIndicatorState extends State<PageViewIndicator> {
       children: List.generate(widget.size, (index) {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          margin: const EdgeInsets.all(4),
+          margin: const EdgeInsets.all(2),
           height: 6,
-          width: index == currentPage ? 20 : 13,
+          width: 13,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3.5),
             color: index <= currentPage

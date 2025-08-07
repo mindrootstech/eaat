@@ -1,6 +1,7 @@
 import 'package:eaat/core/constants/assets.dart';
 import 'package:eaat/core/constants/custom_spacers.dart';
 import 'package:eaat/core/constants/figma_constants.dart';
+import 'package:eaat/features/onboarding/view/screens/my_preferences_page_view.dart';
 import 'package:eaat/router/app_routes.dart';
 import 'package:eaat/utils/locale/app_locale.dart';
 import 'package:eaat/utils/themes/text_styles.dart';
@@ -22,7 +23,10 @@ class GetStartedScreen extends StatelessWidget {
         margin: EdgeInsets.all(FigmaConstants.defaultPadding),
         child: CustomButton(
           label: AppLocale.textGetStarted.tr,
-          onTap: () => Get.toNamed(AppRoutes.onboarding),
+          onTap: () => Get.offNamed(
+            AppRoutes.onboarding,
+            arguments: MyPreferencesPageViewType.onboarding,
+          ),
         ),
       ),
       body: SizedBox(
@@ -41,12 +45,11 @@ class GetStartedScreen extends StatelessWidget {
               ),
               CustomSpacers.height40,
               Text(
-                AppLocale.textScanYourFridge.tr,
+                AppLocale.justScanYourIngredients.tr,
                 style: TextStyles.const20.w700.black,
               ),
-              CustomSpacers.height10,
               Text(
-                AppLocale.textScanYourFridgeAndPantry.tr,
+                AppLocale.justScanYourIngredientsSubtitle.tr,
                 textAlign: TextAlign.center,
                 style: TextStyles.const15.w400.black,
               ),

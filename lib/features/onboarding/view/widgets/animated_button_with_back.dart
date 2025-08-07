@@ -1,4 +1,6 @@
 import 'package:eaat/core/constants/color_palette.dart';
+import 'package:eaat/core/constants/figma_constants.dart';
+import 'package:eaat/features/onboarding/view/screens/my_preferences_page_view.dart';
 import 'package:eaat/features/onboarding/view/utils/page_view_constants.dart';
 import 'package:eaat/router/app_routes.dart';
 import 'package:eaat/utils/locale/app_locale.dart';
@@ -33,7 +35,7 @@ class _AnimatedButtonWithBackState extends State<AnimatedButtonWithBack> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     double targetWidth = currentPage == 0
-        ? screenWidth * 0.8
+        ? screenWidth * 0.85
         : screenWidth * 0.4;
 
     return TweenAnimationBuilder<double>(
@@ -65,6 +67,7 @@ class _AnimatedButtonWithBackState extends State<AnimatedButtonWithBack> {
                     ? Alignment.center
                     : Alignment.centerRight,
                 child: SizedBox(
+                  height: FigmaConstants.defaultButtonHeight,
                   width: width,
                   child: ElevatedButton(
                     onPressed: () {
@@ -74,7 +77,10 @@ class _AnimatedButtonWithBackState extends State<AnimatedButtonWithBack> {
                           curve: Curves.easeInOut,
                         );
                       } else {
-                        Get.offNamed(AppRoutes.onboardingPreferences);
+                        Get.offNamed(
+                          AppRoutes.onboardingPreferences,
+                          arguments: MyPreferencesPageViewType.onboarding,
+                        );
                       }
                     },
                     child: Text(

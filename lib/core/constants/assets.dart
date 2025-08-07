@@ -11,6 +11,10 @@ const String _imagePath = 'assets/images';
 class _SvgIcons {
   final String logo = '$_iconPath/logo.svg';
   final String heart = '$_iconPath/heart.svg';
+  final String likeThisApp = '$_iconPath/like_this_app.svg';
+  final String chefCap = '$_iconPath/chef_cap.svg';
+  final String person = '$_iconPath/person.svg';
+  final String apple = '$_iconPath/apple.svg';
   // Add more as needed
 }
 
@@ -22,6 +26,8 @@ class _PngIcons {
 
 class _Images {
   final String background = '$_imagePath/splash_bg.png';
+  final String scanYourFridge = '$_imagePath/fridge.png';
+  final String notification = '$_imagePath/notification.png';
 }
 
 class _SVGImage {

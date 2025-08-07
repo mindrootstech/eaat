@@ -129,19 +129,60 @@ class AppLocale extends Translations {
       myPreferences: 'My Preferences',
       termsOfUse: 'Terms of Use',
       privacyPolicy: 'Privacy Policy',
+      textSave: 'Save',
+      textSkip: 'Skip',
+      textScan: 'Scan',
+      textLetsScan: 'Let\'s scan',
+      textStayNotified: 'Stay Notified',
+      textLetsScanSubtitle:
+          'lets scan your fridge and pantry to analyze the ingredients',
+      textOpenCamera: 'Open Camera',
+      textGetHealthTips: 'Get health tips & new recipes',
+      textGetHealthTipsSubtitle:
+          'We will notify you about your health and when new recipes arrive',
+      textAllow: 'Allow',
+      textIngredients: 'Ingredients',
+      textGetRecipies: 'Get Recipies',
+      textQty: 'Qty',
+      textLikeTheApp: 'Like the app',
+      textLeaveAReview: 'Leave a review',
+      textLikeTheAppSubtitle:
+          'Leave a 5 star review to let the community know what they are missing on.',
+      textHome: 'Home',
+      textPantry: 'Pantry',
+      textprofile: 'Profile',
+      justScanYourIngredientsSubtitle: 'and get recipes to cook. ',
+      justScanYourIngredients: 'Just scan your ingredients',
     },
   };
 
   static String myPreferences = 'myPreferences'.tr;
+  static String textQty = 'textQty'.tr;
+  static String textScan = 'Scan'.tr;
+  static String textIngredients = 'textIngredients'.tr;
+  static String textGetRecipies = 'textGetRecipies'.tr;
+  static String textLetsScan = 'textLetsScan'.tr;
+  static String textLetsScanSubtitle = 'textLetsScanSubtitle'.tr;
+  static String textGetHealthTips = 'textGetHealthTips'.tr;
+  static String textGetHealthTipsSubtitle = 'textGetHealthTipsSubtitle'.tr;
 
   static String termsOfUse = 'termsOfUse'.tr;
   static String privacyPolicy = 'privacyPolicy'.tr;
+  static String justScanYourIngredients = 'justScanYourIngredients'.tr;
+  static String justScanYourIngredientsSubtitle =
+      'justScanYourIngredientsSubtitle'.tr;
 
   /// Dashboard
   static String textGoToHome = 'textGoToHome'.tr;
   static String textScanYourIngredients = 'textScanYourIngredients'.tr;
   static String textAndCook = 'textAndCook'.tr;
   static String textScanYourFridge = 'textScanYourFridge'.tr;
+  static String textLikeTheApp = 'textLikeTheApp'.tr;
+  static String textHome = 'textHome'.tr;
+  static String textPantry = 'textPantry'.tr;
+  static String textprofile = 'textprofile'.tr;
+  static String textLikeTheAppSubtitle = 'textLikeTheAppSubtitle'.tr;
+  static String textLeaveAReview = 'textLeaveAReview'.tr;
   static String textScanYourFridgeAndPantry = 'textScanYourFridgeAndPantry'.tr;
 
   static String textAiAnalysis = 'textAiAnalysis'.tr;
@@ -152,8 +193,13 @@ class AppLocale extends Translations {
       'textAiSuggestRecipeWhichCanEasilyMade'.tr;
 
   static String textGetStarted = 'textGetStarted'.tr;
+  static String textOpenCamera = 'textOpenCamera'.tr;
+  static String textAllow = 'textAllow'.tr;
 
   static String textNext = 'textNext'.tr;
+  static String textSkip = 'textSkip'.tr;
+  static String textStayNotified = 'textStayNotified'.tr;
+  static String textSave = 'textSave'.tr;
 
   static String textFinish = 'textFinish'.tr;
 
@@ -230,7 +276,7 @@ class AppLocale extends Translations {
   static String get experienced => 'experienced'.tr;
   static String get professional => 'professional'.tr;
 
-  static String get membership => 'textScanYourFridge'.tr;
+  static String get membership => 'membership'.tr;
 
   static String get membershipTitle => 'membershipTitle'.tr;
   static String get others => 'others'.tr;

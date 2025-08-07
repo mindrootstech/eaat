@@ -1,9 +1,6 @@
 import 'package:eaat/core/managers/app_manager.dart';
-import 'package:eaat/features/onboarding/view/screens/get_started_screen.dart';
-import 'package:eaat/features/onboarding/view/screens/my_preferences_page_view.dart';
-import 'package:eaat/features/onboarding/view/screens/onboarding_page_view.dart';
+
 import 'package:eaat/features/onboarding/view/screens/splash_screen.dart';
-import 'package:eaat/features/profile/view/screens/profile_screen.dart';
 import 'package:eaat/router/app_routes.dart';
 import 'package:eaat/router/get_routes.dart';
 import 'package:eaat/utils/locale/app_locale.dart';
@@ -43,6 +40,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           getPages: GetRoutes.routes,
           initialRoute: AppRoutes.splash,
+          defaultTransition: Transition.rightToLeft,
           home: child,
         );
       },
